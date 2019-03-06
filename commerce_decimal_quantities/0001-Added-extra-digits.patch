@@ -1,0 +1,25 @@
+From a5641edce6bd9bcda75b737ec1620cf100b9bf48 Mon Sep 17 00:00:00 2001
+From: Tim Lievens <timlievens@gmail.com>
+Date: Wed, 6 Mar 2019 21:50:40 +0100
+Subject: [PATCH 1/1] Added extra digits
+
+---
+ commerce_decimal_quantities.module | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/commerce_decimal_quantities.module b/commerce_decimal_quantities.module
+index 47ef911..e82390c 100644
+--- a/commerce_decimal_quantities.module
++++ b/commerce_decimal_quantities.module
+@@ -105,6 +105,8 @@ function commerce_decimal_quantities_update_views_edit_quantity(&$form, &$form_s
+         if (is_object($preset) && isset($preset->allow_decimal) && $preset->allow_decimal) {
+           $form['edit_quantity'][$child]['#datatype'] = 'decimal';
+           $form['edit_quantity'][$child]['#default_value'] = $line_item->quantity;
++          $form['edit_quantity'][$child]['#size'] = 7;
++          $form['edit_quantity'][$child]['#maxlength'] = 7;
+           // If we have format_number installed we will use it.
+           if (module_exists('format_number')) {
+             $form['edit_quantity'][$child]['#type'] = 'numericfield';
+-- 
+2.16.3
+
