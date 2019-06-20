@@ -1,0 +1,20 @@
+diff --git a/facebook_pixel.module b/facebook_pixel.module
+index 377bca2..8610b38 100755
+--- a/facebook_pixel.module
++++ b/facebook_pixel.module
+@@ -169,7 +169,6 @@ fbq('track', 'PageView');
+     }
+
+     $script .= "</script>
+-<noscript><img height='1' width='1' style='display:none' src='https://www.facebook.com/tr?id=$pixel_id&ev=PageView&noscript=1' /></noscript>
+ <!-- End Facebook Pixel Code -->
+ ";
+
+@@ -179,6 +178,8 @@ fbq('track', 'PageView');
+       '#weight' => 1000,
+     );
+     drupal_add_html_head($element, 'facebook_pixel');
++
++    $variables['page']['content']['facebook_pixel']['#markup'] = "<noscript><img height='1' width='1' alt='' style='display:none' src='https://www.facebook.com/tr?id=$pixel_id&ev=PageView&noscript=1' /></noscript>";
+   }
+ }
